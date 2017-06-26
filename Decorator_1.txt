@@ -1,0 +1,47 @@
+def check_per(deposit):
+    def wrapper(sum, per, m):
+        if per <= 0:
+            print('Percent should be > 0.')
+        elif per > 20:
+            print('That\'s not a market value for percent.')
+        else:
+            return deposit(sum, per, m)
+    return wrapper
+
+
+@check_per
+
+def deposit(sum, per, m):
+    res = sum * (1 + per/100)**(m/12)
+    return res 
+
+
+
+deposit(1000,20,12)
+
+
+def future_sum(f_sum):
+    def check_per(deposit):
+        def wrapper(sum, per, m):
+            if per <= 0:
+                print('Percent should be > 0.')
+            elif per > 20:
+                print('That\'s not a market value for percent.')
+            else:
+                if deposit(sum, per, m) == f_sum:
+                    return deposit(sum, per, m)
+                else:
+                    print('Failed')
+        return wrapper
+    
+    return check_per
+    
+@future_sum(1200)
+
+def deposit(sum, per, m):
+    res = sum * (1 + per/100)**(m/12)
+    return res 
+
+
+
+deposit(1000,20,12)
