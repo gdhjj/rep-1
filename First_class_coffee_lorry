@@ -1,0 +1,49 @@
+class lorry:
+    def __init__(self):
+        self.boxes = []
+
+    def add_box(self, box):
+        self.boxes.append(box)
+
+    def total_cost(self):
+        total = 0
+        for box in self.boxes:
+            total = box.cost()
+        return total
+
+
+class box:
+    def __init__(self,mass,coffee):
+        self.mass=mass
+        self.coffee=coffee
+
+    def cost(self):
+        return self.coffee.coffee_price()*self.mass
+
+
+class coffee:
+    def __init__(self, coffee_type, price):
+        self.coffee_type=coffee_type
+        self.price
+
+    def coffee_price(self):
+        return  self.coffee_price
+
+
+arabica = coffee("arabica", 100)
+rabusta = coffee("rabusta", 50)
+
+
+box1=box(20, arabica)
+box2=box(30, arabica)
+box3=box(50, rabusta)
+
+
+l = lorry()
+l.add_box(box1)
+l.add_box(box2)
+l.add_box(box3)
+
+
+res = l.total_cost()
+print(res)
