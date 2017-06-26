@@ -1,0 +1,14 @@
+class Circle:
+    def __init__(self,rad,x,y):
+        self.rad = rad
+        self.x = x
+        self.y = y
+def main():
+    c = Circle(100, 10, 20)
+    
+    print(c.__dict__) # object dict
+    print(Circle.__dict__) # class dict
+    
+    #c = Circle.__new__(Circle)
+    #Circle.__init__(c, 100, 10, 20)
+    
