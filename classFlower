@@ -1,0 +1,31 @@
+class bouquet:
+    def __init__(self):
+        self.flowers = []
+
+    def add_flower(self, flower):
+        self.flowers.append(flower)
+
+    def bouquet_cost(self):
+        total_cost = 0
+        for flower in self.flowers:
+            total_cost = flower.flower_cost()
+        return total_cost
+
+class flower:
+    def __init__(self, kind, num, price):
+        self.kind = kind
+        self.num = num
+        self.price = price
+
+    def flower_cost(self):
+        return self.flower.num*self.price
+
+flowers1 = flower("daisy", 5, 17)
+flowers2 = flower("orchid", 6, 10)
+
+bouquet.add_flower(flowers1)
+bouquet.add_flower(flowers2)
+
+res = bouquet.bouquet_cost()
+
+print(res)
