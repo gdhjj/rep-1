@@ -1,0 +1,32 @@
+import math
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y =y
+
+    def distance(point1, point2):
+        return point1+point2
+
+class Circule(Point):
+    def __init__(self, x, y, radius):
+        Point.__init__(self, x, y)
+        self.radius = radius
+
+
+
+
+
+#------------------------------------
+p = Point(10, 20)
+c = Circule(30, 40, 110)
+
+print(c.__dict__)
+
+p1=Point.distance(100, 20)
+print(p1)
+
+c1= Circule(70, 20, 100)
+c2= Circule(40, 70, 3)
+
+print(Point.distance(10, 20))
