@@ -24,7 +24,7 @@ class Flight:
 
     def add_stuff(self, stuff):
         self.stuffs.append(stuff)
-
+#унаследовать
     def proffit(self):
         total = 0
         for ticket in self.tickets:
