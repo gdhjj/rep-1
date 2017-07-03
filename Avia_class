@@ -1,0 +1,95 @@
+class Air_Company:
+    def __init__(self):
+        self.flights = []
+
+    def add_flight(self, flight):
+        self.flights.append(flight)
+
+    def proffit(self):
+        total = 0
+        for flight in self.flights:
+            total+=self.flights.proffit()
+        return total
+
+class Flight:
+    def __init__(self, plane, stuff, direction):
+        self.tickets= []
+        self.plane = plane
+        self.stuffs = []
+        self.direction = direction
+
+    def add_ticket(self, ticket):
+        if self.plane.seats >= self.tickets:
+            self.tickets.append(ticket)
+
+    def add_stuff(self, stuff):
+        self.stuffs.append(stuff)
+
+    def proffit(self):
+        total = 0
+        for ticket in self.tickets:
+            total+=self.tickets.price()
+
+        for stuff in self.stuffs:
+            total-=self.stuff.salory()
+
+        total -= self.plane.fual() * self.direction.distance * 200
+
+        return total
+
+class Plane:
+    def __init__(self, fuel, seats):
+        self.fuel = fuel
+        self.seats = seats
+
+    def fuel(self):
+        return self.fuel
+
+class Stuff:
+    def __init__(self, salory):
+        self.salory = salory
+
+    def salory(self):
+        return self.salory
+
+class Direction:
+    def __init__(self, distance):
+        self.distance = distance
+
+    def distance(self):
+        return self.distance
+
+
+class Tickets:
+    def __init__(self, ticket):
+        self.ticket = ticket
+
+    def price(self):
+        return self.price
+
+
+#---------------------------------------------------------
+
+air_company = Air_Company()
+plane = Plane(300, 20)
+direction = Direction(1000)
+stuart = Stuff(200)
+pilot = Stuff(300)
+
+ticket1 = Tickets(300)
+ticket2 = Tickets(300)
+
+flight = Flight(plane, pilot,direction)
+
+Flight.add_ticket(ticket1)
+Flight.add_ticket(ticket2)
+
+Flight.add_stuffs(pilot)
+Flight.add_stuffs(stuart)
+
+air_company.add_flight(flight)
+
+total_proffit = air_company.proffit()
+
+print(total_proffit)
+
