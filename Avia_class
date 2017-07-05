@@ -1,3 +1,4 @@
+
 class Air_Company:
     def __init__(self):
         self.flights = []
@@ -7,36 +8,41 @@ class Air_Company:
 
     def proffit(self):
         total = 0
+        
         for flight in self.flights:
-            total+=self.flights.proffit()
+            total+=self.Flight.proffit()
         return total
 
+    
 class Flight:
-    def __init__(self, plane, stuff, direction):
-        self.tickets= []
-        self.plane = plane
+    def __init__(self, plane, direction):
+        self.tickets= []     
         self.stuffs = []
+        self.plane = plane
         self.direction = direction
 
+
     def add_ticket(self, ticket):
-        if self.plane.seats >= self.tickets:
+        if self.Plane.seats >= self.ticket:
             self.tickets.append(ticket)
 
     def add_stuff(self, stuff):
         self.stuffs.append(stuff)
-#унаследовать
+
     def proffit(self):
         total = 0
+        
         for ticket in self.tickets:
-            total+=self.tickets.price()
+            total+=self.Tickets.price
 
         for stuff in self.stuffs:
-            total-=self.stuff.salory()
+            total-=self.Stuff.salory
 
-        total -= self.plane.fual() * self.direction.distance * 200
+        total -= self.Plane.fual() * self.Direction.distance * 200
 
         return total
 
+    
 class Plane:
     def __init__(self, fuel, seats):
         self.fuel = fuel
@@ -45,6 +51,7 @@ class Plane:
     def fuel(self):
         return self.fuel
 
+    
 class Stuff:
     def __init__(self, salory):
         self.salory = salory
@@ -52,6 +59,7 @@ class Stuff:
     def salory(self):
         return self.salory
 
+    
 class Direction:
     def __init__(self, distance):
         self.distance = distance
@@ -79,7 +87,7 @@ pilot = Stuff(300)
 ticket1 = Tickets(300)
 ticket2 = Tickets(300)
 
-flight = Flight(plane, pilot,direction)
+flight = Flight(plane,direction)
 
 Flight.add_ticket(ticket1)
 Flight.add_ticket(ticket2)
@@ -92,4 +100,3 @@ air_company.add_flight(flight)
 total_proffit = air_company.proffit()
 
 print(total_proffit)
-
