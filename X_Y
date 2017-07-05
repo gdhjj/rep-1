@@ -1,0 +1,135 @@
+class Game:
+    def __init__(self, player1, player2):
+        self.player1 = player1
+        self.player2 = player2
+
+    def star_game(self):
+
+        while True:
+            if self.player1.is_free_cell():
+                self.player1.step()
+            else:
+                print("Drow")
+                return
+
+            if self.player1.is_line():
+                print("Player1 win!")
+                return
+
+            if self.player2.is_free_cell():
+                self.player2.step()
+            else:
+                print("Drow")
+                return
+
+            if self.player2.is_line():
+                print("Player2 win!")
+                return
+
+class Player:
+    def __init__(self, field, mark):
+        self.field = field
+        self.mark = mark
+
+    def is_free_cell(self):
+        return self.field.is_free()
+
+    def step(self):
+        pass
+
+    def is_line(self):
+        return self.field.check(self.mark)
+
+class Human(Player):
+    def __init__(self, field, mark):
+        Player.__init__(self, field, mark)
+
+    def step(self):
+        x = int(input("enter x"))
+        y = int(input("enter y"))
+
+        self.field.add_mark(x,y,self.mark)
+        self.field.show()
+
+class Computer (Player):
+    def __init__(self, field, mark):
+        Player.__init__(self, field, mark)
+
+    def step(self):
+        (x, y) = self.field.get_free_cell()
+        self.field.add_mark(x,y,self.mark)
+        self.field.show()
+
+class Cell:
+    def __init__(self):
+        self.status = 'P'
+
+class Field:
+    def __init__(self):
+        self.cells = []
+        for i in range(0, 3):
+            temp = []
+            for j in range(0, 3):
+                temp.append(Cell())
+            self.cells.append(temp)
+
+    def is_free(self):
+        for i in range(0, 3):
+            for j in range(0, 3):
+                if self.cells[i][j].status == "P":
+                    return True
+        return False
+
+    def check(self, mark):
+        for i in range(0, 3):
+            if self.cells[i][0].status == mark \
+                and self.cells[i][1].status == mark \
+                and self.cells[i][2].status == mark:
+                return True
+
+        for j in range(0, 3):
+            if self.cells[i][j].status == mark \
+                and self.cells[1][j].status == mark \
+                and self.cells[2][j].status == mark:
+                return True
+
+        if self.cells[0][0].status == mark \
+            and self.cells[1][1].status == mark \
+            and self.cells[2][2].status == mark:
+            return True
+
+        if self.cells[2][0].status == mark \
+            and self.cells[1][1].status == mark \
+            and self.cells[0][2].status == mark:
+            return True
+
+        return False
+
+    def add_mark(self,x,y,mark):
+        self.cells[x][y].status = mark
+
+    def show(self):
+        for i in range(0, 3):
+            for j in range(0, 3):
+                print(self.cells[i][j].status, end ="")
+            print()
+
+    def get_free_cell(self):
+        for i in range(0,3):
+            for j in range(0, 3):
+                if self.cells[i][j].status == "P":
+                    return (i,j)
+
+
+#-------------------------------------------------------------------
+
+def main():
+    field = Field()
+    player1 = Human(field,"x")
+    player2 = Computer(field,"y")
+
+    game=Game(player1,player2)
+    game.star_game()
+
+main()
+
