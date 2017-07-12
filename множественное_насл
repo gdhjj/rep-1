@@ -1,0 +1,28 @@
+class Quadrangle:
+    def __init__(self, line1, line2, line3, angl1, angl2):
+        self.line1 = line1
+        self.line1 = line2
+        self.line1 = line3
+        self.angl1 = angl1
+        self.angl2 = angl2
+
+
+class Paralelogram(Quadrangle):
+    def __init__(self, line1, line2, angl):
+        Quadrangle.__init__(self, line1, line2, line1, angl, 180-angl)
+
+
+class Rectangle(Paralelogram):
+    def __init__(self, line1, line2):
+        Paralelogram.__init__(self, line1, line2, 90)
+
+
+class Romb(Paralelogram):
+    def __init__(self, line, angl):
+        Paralelogram.__init__(self, line, line, angl)
+
+
+class Qudrant(Rectangle, Romb):
+    def __init__(self, line):
+        Rectangle.__init__(self, line, line)
+        Romb.__init__(self, line, 90)
