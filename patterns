@@ -1,0 +1,68 @@
+##Factory
+class Tringle:
+    def __init__(self, line1, line2, line3):
+        self.line1 = line1
+        self.line1 = line2
+        self.line1 = line3
+        
+        
+class TriangleFactory:
+    def create_triangle(self, line1, line2, line3):
+        if line1+line2<=line3:
+            return None
+        return Triangle(self, line1, line2, line3)
+    
+    
+tf = TriangleFactory()
+triangle = tf.create_triangle(15,10,25)
+
+##Builder
+class Foreman:
+    def __init__(self, builder):
+        self.builder = builder
+        
+    def build(self):
+        self.builder.make_base()
+        self.builder.make_walls()
+        self.builder.ruff()
+        
+        
+    def add_base(self):
+        sef.base = base
+        
+    def add_walls(self):
+        sef.walls = walls
+        
+    def add_ruff(self):
+        sef.ruff = ruff
+        
+        
+class Cotetge:
+    def __init__(self, builder):
+        self.base = None
+        self.walls = None
+        self.ruff = None
+  
+      
+class CotetgeBulder:
+    def __init__(self):
+        self.house= Cotetge()
+        
+    def make_base(self):
+        self.house.add_base("base")
+        
+    def make_walls(self):
+        self.house.add_walls("walls")
+        
+    def make_ruff(self):
+        self.house.add_ruff("ruff")
+        
+    def get_house(self):
+        return self.house
+
+
+#-------------------------------        
+bulder = CotetgeBulder()
+forman = Foreman()
+forman.build()
+cotetg = bulder.get_house()
