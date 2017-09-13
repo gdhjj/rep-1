@@ -3,14 +3,20 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np 
 
+%matplotlib notebook
+
 df = pd.read_csv('C:/Users/IT-UNIVER5/Desktop/Python_lab/wheat.data')
 plt.style.use('ggplot')
 
 #area = df['area']
 #rimetr = df['perimeter']
 s1 = df.loc[:,"area":"perimeter"]
+s2 = df.loc[:,"compactness":"width"]
+s3 = df.loc[:,"asymmetry":"groove"]
 
 #s1.plot.hist(alpha=0.5, color = ['y','r'])
 
 s1.plot.scatter(x = 'area', y = 'perimeter', alpha=0.5)
+s2.plot.scatter(x = 'compactness', y = 'width', alpha=0.5)
+s3.plot.scatter(x = 'asymmetry', y = 'groove', alpha=0.5)
 plt.show()
