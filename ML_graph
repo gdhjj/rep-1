@@ -1,0 +1,16 @@
+import matplotlib 
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np 
+
+df = pd.read_csv('C:/Users/IT-UNIVER5/Desktop/Python_lab/wheat.data')
+plt.style.use('ggplot')
+
+#area = df['area']
+#rimetr = df['perimeter']
+s1 = df.loc[:,"area":"perimeter"]
+
+#s1.plot.hist(alpha=0.5, color = ['y','r'])
+
+s1.plot.scatter(x = 'area', y = 'perimeter', alpha=0.5)
+plt.show()
